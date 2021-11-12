@@ -128,7 +128,7 @@ function App() {
                                 value={copied ? "Скопировано!" : "Мой промокод " + promokod}
                             />
                             <button
-                                className="whatsappCopyButton tap"
+                                className="copyButton whatsAppColor whatsAppBorder tap"
                                 onClick={() => {
                                     navigator.clipboard.writeText("Мой промокод " + promokod).then(() => {
                                         setCopied(true);
@@ -145,7 +145,7 @@ function App() {
                             <a
                                 href={"https://whatsapp.com/zelenminions"}
                                 target={"_blank"}
-                                className="whatsappLinkButton" rel="noreferrer"
+                                className="instagramLinkButton whatsAppColor whatsAppBorder" rel="noreferrer"
                             >
                                 <img
                                     className="instagramLinkButtonImage"

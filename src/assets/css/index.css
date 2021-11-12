@@ -119,9 +119,10 @@ a, p, span {
   color: #fff;
 }
 
-.whatsappCopyButton {
-  border-radius: 5px;
+.whatsAppColor {
   background: #34c47e;
-  border: #C43485 1px solid;
-  padding: 5px 10px;
+}
+
+.whatsAppBorder {
+  border: #34c47e 1px solid;
 }
