@@ -5,12 +5,10 @@ import copy from "./assets/img/copy.png";
 // Импорты всех картинок
 import vk from "./assets/img/vk.png";
 import telegram from "./assets/img/telegram.png";
-import instagram from "./assets/img/instagram.png";
 import instagramWhite from "./assets/img/instagram_white.png";
 import facebook from "./assets/img/facebook.png";
 import ok from "./assets/img/ok.png";
 import viber from "./assets/img/viber.png";
-import whatsapp from "./assets/img/whatsapp.png";
 
 function App() {
     const [currentPage, setCurrentPage] = useState(0);
@@ -22,7 +20,8 @@ function App() {
         new URLSearchParams(window.location.search).get("promokod") ??
         "pkrskljdga354";
 
-    const refContainer = useRef();
+    const instagram = useRef();
+    const whatsapp = useRef()
 
     return (
         <div className="application">
@@ -79,16 +78,23 @@ function App() {
                             <input
                                 className="promokodInput"
                                 readOnly={true}
-                                ref={refContainer}
+                                ref={instagram}
+                                onClick={(e) => {
+                                    instagram.current.select();
+                                    document.execCommand('copy');
+                                    e.target.focus();
+                                    setCopied(true);
+                                    setTimeout(() => {
+                                        setCopied(false);
+                                    }, 1000);
+                                }}
                                 value={copied ? "Скопировано!" : "Мой промокод " + promokod}
                             />
                             <button
                                 className="copyButton tap"
                                 onClick={(e) => {
-                                    refContainer.current.select();
+                                    instagram.current.select();
                                     document.execCommand('copy');
-                                    // This is just personal preference.
-                                    // I prefer to not show the whole text area selected.
                                     e.target.focus();
                                     setCopied(true);
                                     setTimeout(() => {
@@ -131,17 +137,28 @@ function App() {
                             <input
                                 className="promokodInput"
                                 readOnly={true}
+                                ref={whatsapp}
+                                onClick={(e) => {
+                                    instagram.current.select();
+                                    document.execCommand('copy');
+                                    e.target.focus();
+                                    setCopied(true);
+                                    setTimeout(() => {
+                                        setCopied(false);
+                                    }, 1000);
+                                }}
                                 value={copied ? "Скопировано!" : "Мой промокод " + promokod}
                             />
                             <button
                                 className="copyButton whatsAppColor whatsAppBorder tap"
-                                onClick={() => {
-                                    navigator.clipboard.writeText("Мой промокод " + promokod).then(() => {
-                                        setCopied(true);
-                                        setTimeout(() => {
-                                            setCopied(false);
-                                        }, 1000);
-                                    })
+                                onClick={(e) => {
+                                    whatsapp.current.select();
+                                    document.execCommand('copy');
+                                    e.target.focus();
+                                    setCopied(true);
+                                    setTimeout(() => {
+                                        setCopied(false);
+                                    }, 1000);
                                 }}
                             >
                                 <img src={copy} alt={"copy icon"} />
