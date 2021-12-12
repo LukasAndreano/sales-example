@@ -28,6 +28,14 @@ body {
   align-items: center;
   justify-content: center;
 }
+input,
+input:before,
+input:after {
+  -webkit-user-select: initial;
+  -moz-user-select: initial;
+  -ms-user-select: initial;
+  user-select: initial;
+}
 
 h1,h2,h3,h4,h5,h6 {
   font-family: "segoeui", serif;
