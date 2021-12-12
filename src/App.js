@@ -1,4 +1,4 @@
-import { useState, Fragment } from "react";
+import {useState, Fragment, useRef} from "react";
 import landing from "./assets/img/landing.jpg";
 import copy from "./assets/img/copy.png";
 
@@ -21,6 +21,8 @@ function App() {
     const promokod =
         new URLSearchParams(window.location.search).get("promokod") ??
         "pkrskljdga354";
+
+    const refContainer = useRef();
 
     return (
         <div className="application">
@@ -77,17 +79,21 @@ function App() {
                             <input
                                 className="promokodInput"
                                 readOnly={true}
+                                ref={refContainer}
                                 value={copied ? "Скопировано!" : "Мой промокод " + promokod}
                             />
                             <button
                                 className="copyButton tap"
-                                onClick={() => {
-                                    navigator.clipboard.writeText("Мой промокод " + promokod).then(() => {
-                                        setCopied(true);
-                                        setTimeout(() => {
-                                            setCopied(false);
-                                        }, 1000);
-                                    })
+                                onClick={(e) => {
+                                    refContainer.current.select();
+                                    document.execCommand('copy');
+                                    // This is just personal preference.
+                                    // I prefer to not show the whole text area selected.
+                                    e.target.focus();
+                                    setCopied(true);
+                                    setTimeout(() => {
+                                        setCopied(false);
+                                    }, 1000);
                                 }}
                             >
                                 <img src={copy} alt={"copy icon"}/>
