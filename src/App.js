@@ -5,10 +5,12 @@ import copy from "./assets/img/copy.png";
 // Импорты всех картинок
 import vk from "./assets/img/vk.png";
 import telegram from "./assets/img/telegram.png";
+import instagram from "./assets/img/instagram.png";
 import instagramWhite from "./assets/img/instagram_white.png";
 import facebook from "./assets/img/facebook.png";
 import ok from "./assets/img/ok.png";
 import viber from "./assets/img/viber.png";
+import whatsapp from "./assets/img/whatsapp.png";
 
 function App() {
     const [currentPage, setCurrentPage] = useState(0);
@@ -20,8 +22,8 @@ function App() {
         new URLSearchParams(window.location.search).get("promokod") ??
         "pkrskljdga354";
 
-    const instagram = useRef();
-    const whatsapp = useRef()
+    const instagramREF = useRef();
+    const whatsappREF = useRef()
 
     return (
         <div className="application">
@@ -53,8 +55,8 @@ function App() {
                                 className={"linkWithImage tap"}
                                 onClick={() => setCurrentPage(2)}
                             >
-                <img className="linkImage" src={whatsapp} alt="Whatsapp" />
-              </span>
+                            <img className="linkImage" src={whatsapp} alt="Whatsapp" />
+                          </span>
                             <span
                                 className={"linkWithImage tap"}
                                 onClick={() => setCurrentPage(1)}
@@ -78,9 +80,9 @@ function App() {
                             <input
                                 className="promokodInput"
                                 readOnly={true}
-                                ref={instagram}
+                                ref={instagramREF}
                                 onClick={(e) => {
-                                    instagram.current.select();
+                                    instagramREF.current.select();
                                     document.execCommand('copy');
                                     e.target.focus();
                                     setCopied(true);
@@ -93,7 +95,7 @@ function App() {
                             <button
                                 className="copyButton tap"
                                 onClick={(e) => {
-                                    instagram.current.select();
+                                    instagramREF.current.select();
                                     document.execCommand('copy');
                                     e.target.focus();
                                     setCopied(true);
@@ -137,9 +139,9 @@ function App() {
                             <input
                                 className="promokodInput"
                                 readOnly={true}
-                                ref={whatsapp}
+                                ref={whatsappREF}
                                 onClick={(e) => {
-                                    instagram.current.select();
+                                    whatsappREF.current.select();
                                     document.execCommand('copy');
                                     e.target.focus();
                                     setCopied(true);
@@ -152,7 +154,7 @@ function App() {
                             <button
                                 className="copyButton whatsAppColor whatsAppBorder tap"
                                 onClick={(e) => {
-                                    whatsapp.current.select();
+                                    whatsappREF.current.select();
                                     document.execCommand('copy');
                                     e.target.focus();
                                     setCopied(true);
